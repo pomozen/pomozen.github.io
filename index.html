@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoZen</title> <!-- Website Name -->
+    <link rel="icon" type="image/png" href="alarm-clock.png"> <!-- Favicon -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>pomozen</h1> <!-- Website Name in Header -->
+        <p>Boost your productivity with timed focus sessions.</p>
+    </header>
+
+    <div class="container">
+        <!-- Settings Section -->
+        <div class="settings">
+            <label for="workTime">Work (min):</label>
+            <input type="number" id="workTime" placeholder="25">
+            <label for="breakTime">Break (min):</label>
+            <input type="number" id="breakTime" placeholder="5">
+            <button id="setTime">Set</button>
+            <button id="resetTimeStudied">Reset Time Studied</button> <!-- Reset Time Studied Button -->
+        </div>
+
+        <!-- Timer Section -->
+        <div class="timer-section">
+            <div class="timer-container">
+                <svg class="progress-ring" width="320" height="320">
+                    <circle class="progress-ring__bg" cx="160" cy="160" r="150"></circle>
+                    <circle class="progress-ring__circle" cx="160" cy="160" r="150"></circle>
+                </svg>
+                <div id="timer" class="timer">25:00</div>
+            </div>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="controls">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <p id="sessions">Sessions: 0</p>
+            <p id="phase">Work</p>
+            <p id="totalTimeStudied">Total Time Studied: 0 minutes</p>
+        </div>
+
+        <!-- Task Management Section -->
+        <div class="task-manager">
+            <h2>Tasks</h2>
+            <div class="task-input">
+                <input type="text" id="taskInput" placeholder="Add a task">
+                <button id="addTask">Add</button>
+            </div>
+            <ul id="taskList">
+                <!-- Tasks will be added here -->
+            </ul>
+        </div>
+
+        <!-- First Spotify Playlist Section -->
+        <div class="spotify-playlist">
+            <h2>Study Playlist</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0iKz8t6px9lO37mcWXT3A2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Second Spotify Playlist Section -->
+        <div class="spotify-playlist">
+            <h2>Ambience</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3KajBVyXI5YVoTIsemGF8b?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
