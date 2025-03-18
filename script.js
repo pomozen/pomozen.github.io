@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Break's over! Back to work.");
              updateTimerDisplay();
         startTimer();
+         totalTimeStudied += (workInput.value ? parseInt(workInput.value) : 25);
+          localStorage.setItem('totalTimeStudied', totalTimeStudied.toString());
+          updateTotalTimeStudiedDisplay();
         } else {
             phaseDisplay.textContent = 'Break';
             totalTime = breakInput.value ? parseInt(breakInput.value) * 60 : 5 * 60;
@@ -84,9 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionsDisplay.textContent = 'Sessions: ' + sessionsCompleted;
               updateTimerDisplay();
               startTimer();
-              totalTimeStudied += (workInput.value ? parseInt(workInput.value) : 25);
-          localStorage.setItem('totalTimeStudied', totalTimeStudied.toString());
-          updateTotalTimeStudiedDisplay();
         }
        
     }
