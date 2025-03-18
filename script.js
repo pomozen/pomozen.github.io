@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function pauseTimer() {
         clearInterval(timerInterval);
         timerInterval = null;
+        switchPhase(); // Immediately switch to break phase
     }
 
     function resetTimer() {
