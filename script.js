@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function pauseTimer() {
         clearInterval(timerInterval);
         timerInterval = null;
-        switchPhase(); // Immediately switch to break phase
     }
 
     function resetTimer() {
@@ -74,11 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalTime = workInput.value ? parseInt(workInput.value) * 60 : 25 * 60;
             timeLeft = totalTime;
             alert("Break's over! Back to work.");
-             updateTimerDisplay();
-        startTimer();
-         totalTimeStudied += (workInput.value ? parseInt(workInput.value) : 25);
-          localStorage.setItem('totalTimeStudied', totalTimeStudied.toString());
-          updateTotalTimeStudiedDisplay();
+            updateTimerDisplay();
         } else {
             phaseDisplay.textContent = 'Break';
             totalTime = breakInput.value ? parseInt(breakInput.value) * 60 : 5 * 60;
@@ -86,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Work time's up! Starting break.");
             sessionsCompleted++;
             sessionsDisplay.textContent = 'Sessions: ' + sessionsCompleted;
-              updateTimerDisplay();
-              startTimer();
+            updateTimerDisplay();
         }
-       
+       pauseTimer();
+        startTimer(); // Always start timer, but the text will be conditional
     }
 
     function playSound() {
@@ -157,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTotalTimeStudiedDisplay() {
-      totalTimeStudiedDisplay.textContent = `Total Time Studied: ${totalTimeStudied} minutes`;
+        totalTimeStudiedDisplay.textContent = `Total Time Studied: ${totalTimeStudied} minutes`;
     }
 
     // Add task on Enter key press
@@ -167,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addTask();
         }
     });
-    
+
     // Reset total time studied
     resetTimeStudiedButton.addEventListener('click', () => {
         totalTimeStudied = 0;

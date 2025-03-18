@@ -3,13 +3,12 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: "Rubik", sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
-    color: #e0e0e0;
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e); /* Dark gradient */
+    color: #e0e0e0; /* Light text for contrast */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    transition: background 0.3s ease;
 }
 
 body:hover {
@@ -24,7 +23,7 @@ body:hover {
 }
 
 .header h1 {
-    color: #b19cd9;
+    color: #b19cd9; /* Lavender-ish color */
     font-size: 4rem;
     margin-bottom: 10px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -65,8 +64,8 @@ body:hover {
 /* Settings Section */
 .settings {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
     align-items: center;
 }
@@ -162,8 +161,8 @@ body:hover {
 /* Controls Section */
 .controls {
     display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap */
-    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
     animation: fadeInUp 1s ease-in-out;
 }
@@ -193,8 +192,8 @@ body:hover {
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
-    width: 100%; /* Adjust width for responsiveness */
-    max-width: 500px; /* Maximum width */
+    width: 100%;
+    max-width: 500px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 1s ease-in-out;
 }
@@ -202,6 +201,17 @@ body:hover {
 .task-manager:hover {
     transform: translateY(-5px);
     box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Task Section */
+.task-section {
+    width: 320px;
+}
+
+.task-section h2 {
+    color: #b19cd9;
+    /* Lavender */
+    font-size: 1.5rem;
 }
 
 .task-input {
@@ -278,8 +288,6 @@ body:hover {
 
 #taskList li button:hover {
     background-color: #b71c1c;
-    transform: scale(1.05);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Style for completed tasks */
