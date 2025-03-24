@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let sessionsCompleted = 0;
     let totalTimeStudied = parseInt(localStorage.getItem('totalTimeStudied')) || 0;
 
+    // Sound Effects
+    const startSound = new Audio('level-up-2-199574.mp3');
+    const endSound = new Audio('simple-notification-152054.mp3');
+
     function updateTimerDisplay() {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
@@ -44,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         isRunning = true;
         startTime = Date.now();
+        startSound.play(); // Play start sound
 
         timerInterval = setInterval(() => {
             const now = Date.now();
@@ -52,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
+                endSound.play(); // Play end sound
                 switchPhase();
             } else {
                 updateTimerDisplay();
@@ -127,105 +133,90 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseButton.addEventListener('click', pauseTimer);
     resetButton.addEventListener('click', resetTimer);
 
-   resetTimeStudiedButton.addEventListener('click', () => {
-       totalTimeStudied = 0;
-       localStorage.setItem('totalTimeStudied', '0');
-       updateTotalTimeStudiedDisplay();
-   });
+    resetTimeStudiedButton.addEventListener('click', () => {
+        totalTimeStudied = 0;
+        localStorage.setItem('totalTimeStudied', '0');
+        updateTotalTimeStudiedDisplay();
+    });
 
-   themeToggleButton.addEventListener('click', () => {
-      if (document.body.classList.contains("light-theme")) {
-          document.body.classList.remove("light-theme");
-          document.body.classList.add("dark-theme");
-      } else {
-          document.body.classList.remove("dark-theme");
-          document.body.classList.add("light-theme");
-      }
-   });
+    themeToggleButton.addEventListener('click', () => {
+        if (document.body.classList.contains('light-theme')) {
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
+        }
+    });
 
-   // Task Management
-   const taskInput = document.getElementById('taskInput');
-   const addTaskButton = document.getElementById('addTask');
-   const taskList = document.getElementById('taskList');
+    // Task Management
+    const taskInput = document.getElementById('taskInput');
+    const addTaskButton = document.getElementById('addTask');
+    const taskList = document.getElementById('taskList');
 
-   function addTask() {
-      const taskText = taskInput.value.trim();
-      if (taskText !== '') {
-          const listItem = document.createElement('li');
-          listItem.innerHTML = `
-              <div class='task-item'>
-                  <input type='checkbox'>
-                  <span>${taskText}</span>
-              </div>
-              <button class='editTask'>Edit</button> 
-              <button class='deleteTask'>Delete</button>`;
-          taskList.appendChild(listItem);
-          taskInput.value='';
-      }
-   }
+    function addTask() {
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <div class='task-item'>
+                    <input type='checkbox'>
+                    <span>${taskText}</span>
+                </div>
+                <button class='editTask'>Edit</button> 
+                <button class='deleteTask'>Delete</button>`;
+            taskList.appendChild(listItem);
+            taskInput.value = '';
+        }
+    }
 
-   // Delete task function
-   function deleteTask(event) {
-      if (event.target.classList.contains('deleteTask')) {
-          event.target.parentElement.remove();
-      }
-   }
+    // Delete task function
+    function deleteTask(event) {
+        if (event.target.classList.contains('deleteTask')) {
+            event.target.parentElement.remove();
+        }
+    }
 
-   // Edit task function
-   function editTask(event) {
-      if (event.target.classList.contains('editTask')) {
-          const listItemSpan = event.target.parentElement.querySelector('.task-item span');
-          taskInput.value = listItemSpan.textContent; // Set input value to current task text
-          deleteTask(event); // Remove the old task
-      }
-   }
+    // Edit task function
+    function editTask(event) {
+        if (event.target.classList.contains('editTask')) {
+            const listItemSpan = event.target.parentElement.querySelector('.task-item span');
+            taskInput.value = listItemSpan.textContent; // Set input value to current task text
+            deleteTask(event); // Remove the old task
+        }
+    }
 
-   // Toggle complete function for tasks
-   function toggleComplete(event) {
-      if (event.target.type === 'checkbox') {
-          const listItem= event.target.parentElement.parentElement;
-          const span= listItem.querySelector('span');
-          span.classList.toggle('completed');
-      }
-   }
+    // Toggle complete function for tasks
+    function toggleComplete(event) {
+        if (event.target.type === 'checkbox') {
+            const listItem = event.target.parentElement.parentElement;
+            const span = listItem.querySelector('span');
+            span.classList.toggle('completed');
+        }
+    }
 
-   // Add task button functionality
-   addTaskButton.addEventListener('click', addTask);
+    // Add task button functionality
+    addTaskButton.addEventListener('click', addTask);
 
-   // Event listener for task input to allow Enter key submission
-   taskInput.addEventListener("keypress", function(event) {
-       if (event.key === "Enter") { // Check if Enter key is pressed
-           addTask(); // Call addTask function to add the task
-       }
-   });
+    // Event listener for task input to allow Enter key submission
+    taskInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") { // Check if Enter key is pressed
+            addTask(); // Call addTask function to add the task
+        }
+    });
 
-   // Event listener for task list actions
-   taskList.addEventListener('click', function(event) {
-      if (event.target.classList.contains('deleteTask')) {
-          deleteTask(event);
-      } else if (event.target.classList.contains('editTask')) {
-          editTask(event);
-      } else if (event.target.type === 'checkbox') {
-          toggleComplete(event);
-      }
-   });
+    // Event listener for task list actions
+    taskList.addEventListener('click', function(event) {
+        if (event.target.classList.contains('deleteTask')) {
+            deleteTask(event);
+        } else if (event.target.classList.contains('editTask')) {
+            editTask(event);
+        } else if (event.target.type === 'checkbox') {
+            toggleComplete(event);
+        }
+    });
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-
-// Initialize display
-resetTimer();
-updateTotalTimeStudiedDisplay();
-
+    // Initialize display
+    resetTimer();
+    updateTotalTimeStudiedDisplay();
 });
