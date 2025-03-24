@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease; /* Add transition for theme changes */
 }
 
 body:hover {
@@ -39,6 +40,7 @@ body:hover {
 .header p {
     color: #a0a0a0;
     font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 
 /* Container */
@@ -53,7 +55,7 @@ body:hover {
     border-radius: 15px;
     background: rgba(30, 30, 30, 0.8);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .container:hover {
@@ -73,6 +75,7 @@ body:hover {
 .settings label {
     color: #e0e0e0;
     font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
 .settings input {
@@ -81,7 +84,7 @@ body:hover {
     color: #e0e0e0;
     border: 1px solid #666;
     border-radius: 5px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .settings input:focus {
@@ -99,7 +102,7 @@ body:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -139,6 +142,7 @@ body:hover {
     font-size: 4rem;
     color: #e0e0e0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
 }
 
 .progress-ring {
@@ -177,7 +181,7 @@ body:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -196,7 +200,7 @@ body:hover {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
     width: 100%;
     max-width: 500px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -212,8 +216,8 @@ body:hover {
 
 .task-section h2 {
     color: #b19cd9;
-    /* Lavender */
     font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
 .task-input {
@@ -229,7 +233,7 @@ body:hover {
     color: #e0e0e0;
     border: 1px solid #666;
     border-radius: 7px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 #taskInput:focus {
@@ -245,7 +249,7 @@ body:hover {
     border: none;
     border-radius: 7px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -269,7 +273,7 @@ body:hover {
     color: #e0e0e0;
     margin-bottom: 8px;
     border-radius: 7px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 #taskList li:hover {
@@ -284,7 +288,7 @@ body:hover {
     padding: 7px 12px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -333,6 +337,7 @@ body:hover {
     background-color: #333;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
     animation: fadeIn 1s ease-in-out;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 #sessions,
@@ -341,6 +346,7 @@ body:hover {
     margin: 8px 0;
     font-size: 1.2rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: color 0.3s ease;
 }
 
 /* Spotify Playlist Section */
@@ -351,7 +357,7 @@ body:hover {
     padding: 20px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
     width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -365,6 +371,7 @@ body:hover {
     font-size: 1.8rem;
     margin-bottom: 15px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
 }
 
 .spotify-playlist iframe {
@@ -385,11 +392,13 @@ body:hover {
     padding: 15px;
     color: #a0a0a0;
     font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .footer a {
     color: #a0a0a0;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer a:hover {
@@ -494,14 +503,161 @@ body:hover {
 }
 
 /* Themes */
-body {
-   background-color : variables(--background-color);  
-   color : variables(--text-color); 
+/* Light Theme */
+body.light-theme {
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+    color: #333;
 }
 
-button {
-   background-color : variables(--primary-color-lavender);  
+body.light-theme:hover {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
 }
- #resetTimeStudied {
-  backgound-color : variables(--primary-color-red);
- }
+
+body.light-theme .header h1 {
+    color: #7957d6;
+}
+
+body.light-theme .header p {
+    color: #555;
+}
+
+body.light-theme .container {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .settings label {
+    color: #555;
+}
+
+body.light-theme .settings input {
+    background-color: #ddd;
+    color: #555;
+    border-color: #aaa;
+}
+
+body.light-theme .timer {
+    color: #555;
+}
+
+body.light-theme .progress-ring__bg {
+    stroke: #ddd;
+}
+
+body.light-theme .stats {
+    background-color: #ddd;
+    color: #555;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .task-manager {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .task-section h2 {
+    color: #7957d6;
+}
+
+body.light-theme #taskInput {
+    background-color: #ddd;
+    color: #555;
+    border-color: #aaa;
+}
+
+body.light-theme #taskList li {
+    background-color: #eee;
+    color: #555;
+}
+
+body.light-theme .completed {
+    color: #bbb;
+}
+
+body.light-theme .footer {
+    color: #777;
+}
+
+body.light-theme .footer a {
+    color: #777;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+    color: #e0e0e0;
+}
+
+body.dark-theme:hover {
+    background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+}
+
+body.dark-theme .header h1 {
+    color: #b19cd9;
+}
+
+body.dark-theme .header p {
+    color: #a0a0a0;
+}
+
+body.dark-theme .container {
+    background: rgba(30, 30, 30, 0.8);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .settings label {
+    color: #e0e0e0;
+}
+
+body.dark-theme .settings input {
+    background-color: #444;
+    color: #e0e0e0;
+    border-color: #666;
+}
+
+body.dark-theme .timer {
+    color: #e0e0e0;
+}
+
+body.dark-theme .progress-ring__bg {
+    stroke: #444;
+}
+
+body.dark-theme .stats {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .task-manager {
+    background: rgba(30, 30, 30, 0.8);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .task-section h2 {
+    color: #b19cd9;
+}
+
+body.dark-theme #taskInput {
+    background-color: #444;
+    color: #e0e0e0;
+    border-color: #666;
+}
+
+body.dark-theme #taskList li {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-theme .completed {
+    color: #888;
+}
+
+body.dark-theme .footer {
+    color: #a0a0a0;
+}
+
+body.dark-theme .footer a {
+    color: #a0a0a0;
+}
+
