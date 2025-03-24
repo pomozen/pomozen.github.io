@@ -24,108 +24,108 @@ document.addEventListener('DOMContentLoaded', () => {
     let startTime; // Timestamp when the timer started
     let isRunning = false;
     let isWorkPhase = true;
-    
-   // Task Management Variables
-   let sessionsCompleted = 0;
-   let totalTimeStudied = parseInt(localStorage.getItem('totalTimeStudied')) || 0;
 
-   function updateTimerDisplay() {
-       const minutes = Math.floor(timeLeft / 60);
-       const seconds = timeLeft % 60;
-       timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    // Task Management Variables
+    let sessionsCompleted = 0;
+    let totalTimeStudied = parseInt(localStorage.getItem('totalTimeStudied')) || 0;
 
-       // Update progress ring
-       const progress = timeLeft / totalTime;
-       circle.style.strokeDashoffset = circumference * (1 - progress);
-   }
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-   function startTimer() {
-       if (isRunning) return;
+        // Update progress ring
+        const progress = timeLeft / totalTime;
+        circle.style.strokeDashoffset = circumference * (1 - progress);
+    }
 
-       isRunning = true;
-       startTime = Date.now();
+    function startTimer() {
+        if (isRunning) return;
 
-       timerInterval = setInterval(() => {
-           const now = Date.now();
-           const elapsedTime = Math.floor((now - startTime) / 1000);
-           timeLeft = totalTime - elapsedTime;
+        isRunning = true;
+        startTime = Date.now();
 
-           if (timeLeft <= 0) {
-               clearInterval(timerInterval);
-               switchPhase();
-           } else {
-               updateTimerDisplay();
-           }
-       }, 1000);
-   }
+        timerInterval = setInterval(() => {
+            const now = Date.now();
+            const elapsedTime = Math.floor((now - startTime) / 1000);
+            timeLeft = totalTime - elapsedTime;
 
-   function pauseTimer() {
-       if (!isRunning) return;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                switchPhase();
+            } else {
+                updateTimerDisplay();
+            }
+        }, 1000);
+    }
 
-       isRunning = false;
-       clearInterval(timerInterval);
-       totalTime -= Math.floor((Date.now() - startTime) / 1000); // Adjust total time left
-   }
+    function pauseTimer() {
+        if (!isRunning) return;
 
-   function resetTimer() {
-       pauseTimer();
-       isWorkPhase = true;
-       totalTime = workInput.value ? parseInt(workInput.value) * 60 : 25 * 60;
-       timeLeft = totalTime;
-       phaseDisplay.textContent = 'Work';
-       updateTimerDisplay();
-       circle.style.strokeDashoffset = circumference; // Reset progress ring
-       sessionsCompleted = 0;
-       sessionsDisplay.textContent = 'Sessions: ' + sessionsCompleted;
-   }
+        isRunning = false;
+        clearInterval(timerInterval);
+        totalTime -= Math.floor((Date.now() - startTime) / 1000); // Adjust total time left
+    }
 
-   function switchPhase() {
-       isWorkPhase = !isWorkPhase;
+    function resetTimer() {
+        pauseTimer();
+        isWorkPhase = true;
+        totalTime = workInput.value ? parseInt(workInput.value) * 60 : 25 * 60;
+        timeLeft = totalTime;
+        phaseDisplay.textContent = 'Work';
+        updateTimerDisplay();
+        circle.style.strokeDashoffset = circumference; // Reset progress ring
+        sessionsCompleted = 0;
+        sessionsDisplay.textContent = 'Sessions: ' + sessionsCompleted;
+    }
 
-       if (isWorkPhase) {
-           phaseDisplay.textContent = 'Work';
-           totalTime =
-               workInput.value ? parseInt(workInput.value) * 60 : 25 * 60;
-           alert("Break's over! Back to work.");
-           totalTimeStudied += workInput.value ? parseInt(workInput.value) : 25; // Add work time to total studied
-           localStorage.setItem('totalTimeStudied', totalTimeStudied.toString());
-           updateTotalTimeStudiedDisplay();
-       } else {
-           phaseDisplay.textContent = 'Break';
-           totalTime =
-               breakInput.value ? parseInt(breakInput.value) * 60 : 5 * 60;
-           alert("Work time's up! Starting break.");
-           sessionsCompleted++;
-           sessionsDisplay.textContent =
-               'Sessions: ' + sessionsCompleted;
-       }
+    function switchPhase() {
+        isWorkPhase = !isWorkPhase;
 
-       timeLeft = totalTime;
-       updateTimerDisplay();
-       startTimer();
-   }
+        if (isWorkPhase) {
+            phaseDisplay.textContent = 'Work';
+            totalTime =
+                workInput.value ? parseInt(workInput.value) * 60 : 25 * 60;
+            alert("Break's over! Back to work.");
+            totalTimeStudied += workInput.value ? parseInt(workInput.value) : 25; // Add work time to total studied
+            localStorage.setItem('totalTimeStudied', totalTimeStudied.toString());
+            updateTotalTimeStudiedDisplay();
+        } else {
+            phaseDisplay.textContent = 'Break';
+            totalTime =
+                breakInput.value ? parseInt(breakInput.value) * 60 : 5 * 60;
+            alert("Work time's up! Starting break.");
+            sessionsCompleted++;
+            sessionsDisplay.textContent =
+                'Sessions: ' + sessionsCompleted;
+        }
 
-   function updateTotalTimeStudiedDisplay() {
-       totalTimeStudiedDisplay.textContent =
-           `Total Time Studied: ${totalTimeStudied} minutes`;
-   }
+        timeLeft = totalTime;
+        updateTimerDisplay();
+        startTimer();
+    }
 
-   // Set time button functionality
-   setTimeButton.addEventListener('click', () => {
-       resetTimer();
-       totalTime =
-           (workInput.value ? parseInt(workInput.value) : 25) * 60 || totalTime;
-       timeLeft =
-           (workInput.value ? parseInt(workInput.value) : totalTime / 60) *
-               60 || timeLeft;
+    function updateTotalTimeStudiedDisplay() {
+        totalTimeStudiedDisplay.textContent =
+            `Total Time Studied: ${totalTimeStudied} minutes`;
+    }
 
-       updateTimerDisplay();
-   });
+    // Set time button functionality
+    setTimeButton.addEventListener('click', () => {
+        resetTimer();
+        totalTime =
+            (workInput.value ? parseInt(workInput.value) : 25) * 60 || totalTime;
+        timeLeft =
+            (workInput.value ? parseInt(workInput.value) : totalTime / 60) *
+                60 || timeLeft;
 
-   // Button event listeners
-   startButton.addEventListener('click', startTimer);
-   pauseButton.addEventListener('click', pauseTimer);
-   resetButton.addEventListener('click', resetTimer);
+        updateTimerDisplay();
+    });
+
+    // Button event listeners
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
+    resetButton.addEventListener('click', resetTimer);
 
    resetTimeStudiedButton.addEventListener('click', () => {
        totalTimeStudied = 0;
@@ -174,8 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
    // Edit task function
    function editTask(event) {
       if (event.target.classList.contains('editTask')) {
-          const listItem = event.target.parentElement.querySelector('.task-item span');
-          taskInput.value = listItem.textContent; // Set input value to current task text
+          const listItemSpan = event.target.parentElement.querySelector('.task-item span');
+          taskInput.value = listItemSpan.textContent; // Set input value to current task text
           deleteTask(event); // Remove the old task
       }
    }
@@ -192,6 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
    // Add task button functionality
    addTaskButton.addEventListener('click', addTask);
 
+   // Event listener for task input to allow Enter key submission
+   taskInput.addEventListener("keypress", function(event) {
+       if (event.key === "Enter") { // Check if Enter key is pressed
+           addTask(); // Call addTask function to add the task
+       }
+   });
+
    // Event listener for task list actions
    taskList.addEventListener('click', function(event) {
       if (event.target.classList.contains('deleteTask')) {
@@ -203,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
    });
 
-   
    
    
    

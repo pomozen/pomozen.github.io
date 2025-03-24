@@ -503,6 +503,7 @@ body:hover {
 }
 
 /* Themes */
+
 /* Light Theme */
 body.light-theme {
     background: linear-gradient(135deg, #f0f0f0, #ffffff);
@@ -660,4 +661,3 @@ body.dark-theme .footer {
 body.dark-theme .footer a {
     color: #a0a0a0;
 }
-
