@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
    function switchPhase() {
+       isRunning = false; // Add this line to reset isRunning
        isWorkPhase = !isWorkPhase;
 
        if (isWorkPhase) {
