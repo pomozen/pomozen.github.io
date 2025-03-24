@@ -3,8 +3,8 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: "Rubik", sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #2e2e2e); /* Dark gradient */
-    color: #e0e0e0; /* Light text for contrast */
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+    color: #e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +23,7 @@ body:hover {
 }
 
 .header h1 {
-    color: #b19cd9; /* Lavender-ish color */
+    color: #b19cd9;
     font-size: 4rem;
     margin-bottom: 10px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -91,7 +91,8 @@ body:hover {
 }
 
 #setTime,
-#resetTimeStudied {
+#resetTimeStudied,
+#themeToggle {
     padding: 8px 15px;
     background-color: #b19cd9;
     color: #1a1a1a;
@@ -103,7 +104,8 @@ body:hover {
 }
 
 #setTime:hover,
-#resetTimeStudied:hover {
+#resetTimeStudied:hover,
+#themeToggle:hover {
     background-color: #9575cd;
     transform: scale(1.05);
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
@@ -444,7 +446,8 @@ body:hover {
     .settings label,
     .settings input,
     #setTime,
-    #resetTimeStudied {
+    #resetTimeStudied,
+    #themeToggle {
         margin-bottom: 10px;
         width: 100%;
         text-align: center;
@@ -489,3 +492,16 @@ body:hover {
         margin: 5px 0;
     }
 }
+
+/* Themes */
+body {
+   background-color : variables(--background-color);  
+   color : variables(--text-color); 
+}
+
+button {
+   background-color : variables(--primary-color-lavender);  
+}
+ #resetTimeStudied {
+  backgound-color : variables(--primary-color-red);
+ }
